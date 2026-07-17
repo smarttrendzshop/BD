@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Trendz Shop | Global Trends, Your Choice</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Fonts (Plus Jakarta Sans for English & Hind Siliguri for Bangla) -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --main-teal: #38b2ac;
+            --main-coral: #ff7f50;
+            --dark-bg: #0f172a;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.15);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', 'Hind Siliguri', sans-serif;
+            background: radial-gradient(circle at 50% 50%, rgba(56, 178, 172, 0.2) 0%, var(--dark-bg) 80%);
+            color: #ffffff;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Responsive Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--dark-bg); }
+        ::-webkit-scrollbar-thumb { background: var(--main-teal); border-radius: 10px; }
+
+        /* Premium Glass Navbar */
+        .navbar {
+            background: rgba(15, 23, 42, 0.85) !important;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 15px 0;
+        }
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.6rem;
+            background: linear-gradient(to right, var(--main-teal), var(--main-coral));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+        }
+        .nav-link {
+            font-weight: 600;
+            color: #f1f5f9 !important;
+            padding: 8px 18px !important;
+            border-radius: 50px;
+            transition: 0.3s;
+        }
+        .nav-link:hover {
+            background: rgba(56, 178, 172, 0.2);
+            color: var(--main-teal) !important;
+        }
+
+        /* Language Switcher Styling */
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--glass-border);
+            color: #fff;
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .lang-btn:hover {
+            background: var(--main-teal);
+            border-color: var(--main-teal);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 95vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+        }
+        .logo-box {
+            width: 180px;
+            height: 180px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px dashed var(--main-teal);
+            border-radius: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.5rem;
+            color: var(--main-teal);
+            backdrop-filter: blur(10px);
+            animation: floating 5s ease-in-out infinite;
+            overflow: hidden;
+        }
+
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .text-secondary-custom {
+            color: #cbd5e1 !important;
+            line-height: 1.7;
+        }
+
+        /* Ultra Stylish Glass Cards */
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            padding: 40px 30px;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            height: 100%;
+        }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.09);
+            transform: translateY(-8px);
+            border-color: rgba(56, 178, 172, 0.5);
+            box-shadow: 0 15px 35px rgba(56, 178, 172, 0.15);
+        }
+        .card-icon {
+            width: 65px;
+            height: 65px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+        .glass-card:hover .card-icon {
+            background: linear-gradient(135deg, var(--main-teal), var(--main-coral));
+            color: white !important;
+        }
+
+        /* CTA & Buttons */
+        .btn-premium {
+            background: linear-gradient(45deg, var(--main-teal), var(--main-coral));
+            border: none;
+            padding: 14px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 8px 24px rgba(56, 178, 172, 0.3);
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-premium:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(56, 178, 172, 0.5);
+            color: white;
+        }
+
+        /* Info Items for Contact / About */
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            background: rgba(255,255,255,0.04);
+            padding: 15px 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .info-item:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: var(--main-teal);
+        }
+        .info-item i {
+            font-size: 1.3rem;
+            color: var(--main-coral);
+        }
+
+        footer {
+            background: #090d16;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Responsive Navbar (Always in English) -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            
+            <!-- ↓↓↓ লোগো বসানোর জায়গা ১ (মেনুবার / Navbar) ↓↓↓ -->
+            <!-- src="" এর ভেতরে আপনার লোগো ইমেজের লিংক বা নাম দিন (যেমন: logo.png) -->
+            <a class="navbar-brand" href="#">
+                <img src="./logo.png" alt="Smart Trendz Shop" style="height: 45px; object-fit: contain;">
+            </a>
+            <!-- ↑↑↑ লোগো বসানোর জায়গা ১ শেষ ↑↑↑ -->
+
+            <button class="navbar-toggler border-0 bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto gap-1 align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#details">Shop Details</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#collections">Collections</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
+                    <!-- Language Toggle Button -->
+                    <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                        <button class="btn lang-btn" onclick="toggleLanguage()" id="langBtn">বাং</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center gy-5">
+                <div class="col-lg-6 text-center text-lg-start">
+                    <h1 class="display-4 fw-extrabold mb-4" style="font-weight: 800; line-height: 1.2;">
+                        Welcome to <br><span style="color: var(--main-teal);">Smart Trendz Shop</span>
+                    </h1>
+                    <p class="fs-5 text-secondary-custom mb-5" id="hero-desc">
+                        গ্লোবাল ট্রেন্ড আর আপনার পছন্দের সেরা ফিউশন! একই ছাদের নিচে ছেলে ও মেয়েদের এক্সক্লুসিভ থ্রি-পিস, প্রিমিয়াম কোয়ালিটির শার্ট এবং ট্রেন্ডি সব ফ্যাশন অ্যাক্সেসরিজের এক বিশাল ও নির্ভরযোগ্য কালেকশন।
+                    </p>
+                    <a href="#collections" class="btn btn-premium btn-lg" id="hero-btn">Explore Collections</a>
+                </div>
+                <div class="col-lg-6 d-flex justify-content-center">
+                    <div class="logo-box shadow-lg">
+
+                        <!-- ↓↓↓ লোগো বসানোর জায়গা ২ (হিরো সেকশন / বড় ভাসমান বক্স) ↓↓↓ -->
+                        <!-- src="" এর ভেতরে আপনার লোগো ইমেজের লিংক বা নাম দিন (যেমন: logo.png) -->
+                        <img src="./logo.png" alt="Smart Trendz Shop" style="max-width: 80%; max-height: 80%; object-fit: contain;">
+                        <!-- ↑↑↑ লোগো বসানোর জায়গা ২ শেষ ↑↑↑ -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Details Section -->
+    <section id="details" class="py-5">
+        <div class="container py-4">
+            <div class="glass-card p-5">
+                <div class="row align-items-center gy-4">
+                    <div class="col-lg-6">
+                        <span class="text-uppercase fw-bold text-info tracking-wider small">Who We Are</span>
+                        <h2 class="fw-bold mt-2 mb-4" id="details-title" style="font-size: 2.2rem;">আমাদের শপ সম্পর্কে বিস্তারিত</h2>
+                        <p class="text-secondary-custom" id="details-desc">ফ্যাশন যখন হবে স্মার্ট আর কোয়ালিটি যখন হবে আপোষহীন, তখনই আসে <strong>Smart Trendz Shop</strong>-এর নাম। আমরা কাস্টমারদের জন্য চমৎকার ফেব্রিক্সের কমফোর্ট এবং আধুনিক যুগের নতুন নতুন স্টাইলের কম্বিনেশন ডিজাইন করি। প্রতিটি পোশাক এবং অ্যাক্সেসরিজ সরাসরি প্রিমিয়াম সোর্স থেকে সংগ্রহ করা হয়।</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <div class="p-4 rounded-4" style="background: rgba(56, 178, 172, 0.08); border: 1px solid rgba(56, 178, 172, 0.2);">
+                                    <h4 class="fw-bold text-info">100%</h4>
+                                    <span class="text-secondary-custom d-block" id="badge-1">কোয়ালিটি গ্যারান্টি</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="p-4 rounded-4" style="background: rgba(255, 127, 80, 0.08); border: 1px solid rgba(255, 127, 80, 0.2);">
+                                    <h4 class="fw-bold text-warning">Fast</h4>
+                                    <span class="text-secondary-custom d-block" id="badge-2">ডেলিভারি সাপোর্ট</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collections Showcase -->
+    <section id="collections" class="py-5">
+        <div class="container py-4">
+            <div class="section-header text-center mb-5">
+                <h2 id="showcase-title">Our Premium Showcase</h2>
+                <p class="text-secondary-custom" id="showcase-subtitle">স্মার্ট ট্রেন্ডজ শপ-এর মূল আকর্ষণসমূহ</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="glass-card">
+                        <div class="card-icon text-info"><i class="fa-solid fa-person-dress fa-2x"></i></div>
+                        <h4 class="fw-bold mb-3" id="card1-title">Girls' Collection</h4>
+                        <p class="text-secondary-custom" id="card1-desc">এক্সক্লুসিভ গর্জিয়াস থ্রি-পিস, মডার্ন কুর্তি এবং ট্রেন্ডি লেডিস পোশাক যা আপনাকে যেকোনো পার্টি বা ক্যাজুয়াল লুকে দেবে একদম পারফেক্ট গ্ল্যামার।</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="glass-card">
+                        <div class="card-icon text-warning"><i class="fa-solid fa-shirt fa-2x"></i></div>
+                        <h4 class="fw-bold mb-3" id="card2-title">Boys' Premium Shirts</h4>
+                        <p class="text-secondary-custom" id="card2-desc">ফ্যাশনেবল ক্যাজুয়াল শার্ট, ফরমাল কালেকশন এবং প্রিমিয়াম সুতি কাপড়ের ট্রেন্ডি কালেকশন যা স্টাইল ও কমফোর্টের দারুণ সমাহার।</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="glass-card">
+                        <div class="card-icon text-info"><i class="fa-solid fa-glasses fa-2x"></i></div>
+                        <h4 class="fw-bold mb-3" id="card3-title">Smart Accessories</h4>
+                        <p class="text-secondary-custom" id="card3-desc">আপনার প্রতিদিনের আউটফিটকে আরও আকর্ষণীয় করতে ম্যাচিং ঘড়ি, সানগ্লাস, ওয়ালেট এবং লেটেস্ট গ্যাজেট কালেকশন।</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Contact Section -->
+    <section id="contact" class="py-5 mb-5">
+        <div class="container py-4">
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <h2 class="fw-bold mb-4" id="contact-title">আমাদের সাথে যোগাযোগের ঠিকানা</h2>
+                    <p class="text-secondary-custom mb-4" id="contact-desc">যেকোনো প্রশ্ন, পাইকারি বা খুচরা অর্ডার কিংবা প্রোডাক্ট বুকিং সংক্রান্ত যেকোনো তথ্যের জন্য সরাসরি যোগাযোগ করতে পারেন নিচে দেওয়া অ্যাড্রেসে বা মেইলে।</p>
+                    
+                    <!-- Location Fixed to Mohammadpur, Dhaka -->
+                    <div class="info-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <strong class="d-block text-white" id="loc-lbl">Shop Location:</strong>
+                            <span class="text-secondary-custom" id="loc-val">Mohammadpur, Dhaka, Bangladesh</span>
+                        </div>
+                    </div>
+
+                    <!-- Email Section with Auto-Mail Feature -->
+                    <a href="mailto:smarttrendzshop@gmail.com" class="info-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div>
+                            <strong class="d-block text-white" id="email-lbl">Email Address:</strong>
+                            <span class="text-secondary-custom">smarttrendzshop@gmail.com</span> 
+                        </div>
+                    </a>
+
+                    <!-- WhatsApp Section with Auto-Chat Feature -->
+                    <a href="https://wa.me/8801981500986" target="_blank" class="info-item">
+                        <i class="fa-brands fa-whatsapp text-success" style="font-size: 1.5rem;"></i>
+                        <div>
+                            <strong class="d-block text-white" id="wp-lbl">WhatsApp Chat:</strong>
+                            <span class="text-secondary-custom">01981500986</span> 
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="col-lg-6">
+                    <!-- Connect CTA Box -->
+                    <div class="glass-card text-center d-flex flex-column justify-content-center align-items-center h-100">
+                        <i class="fa-brands fa-facebook fa-4x text-info mb-4"></i>
+                        <h3 class="fw-bold mb-3" id="fb-title">ফেসবুকে কানেক্টেড থাকুন</h3>
+                        <p class="text-secondary-custom mb-4 px-3" id="fb-desc">রেগুলার নতুন স্টকের আপডেট ও লাইভ সেশন দেখতে আমাদের অফিশিয়াল ফেসবুক পেজ ফলো করুন।</p>
+                        
+                        <!-- ↓↓↓ ফেসবুক লিংক বসানোর জায়গা ↓↓↓ -->
+                        <!-- এখানে href="#" এর হ্যাশ (#) চিহ্নটি কেটে আপনার ফেসবুক পেজের লিংকটি বসিয়ে দিন -->
+                        <a href="https://www.facebook.com/share/17aasm9b1X/" target="_blank" class="btn btn-premium" id="fb-btn">Visit Official Facebook Page</a>
+                        <!-- ↑↑↑ ফেসবুক লিংক বসানোর জায়গা শেষ ↑↑↑ -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Area with Strict Copyright -->
+    <footer class="py-4 text-center">
+        <div class="container">
+            <p class="mb-2 text-secondary-custom">
+                &copy; 2026 <span class="fw-bold text-white">Smart Trendz Shop</span>. <span id="copy-text">All Rights Reserved.</span>
+            </p>
+            <small class="text-muted" style="font-size: 0.8rem; letter-spacing: 0.5px;">
+                Designed to provide a high-end dynamic & responsive user experience.
+            </small>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 Bundle with Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Smart Multi-Language Architecture (Pure Vanilla JS) -->
+    <script>
+        // Language Database
+        const data = {
+            bn: {
+                heroDesc: "গ্লোবাল ট্রেন্ড আর আপনার পছন্দের সেরা ফিউশন! একই ছাদের নিচে ছেলে ও মেয়েদের এক্সক্লুসিভ থ্রি-পিস, প্রিমিয়াম কোয়ালিটির শার্ট এবং ট্রেন্ডি সব ফ্যাশন অ্যাক্সেসরিজের এক বিশাল ও নির্ভরযোগ্য কালেকশন।",
+                heroBtn: "Explore Collections",
+                detailsTitle: "আমাদের শপ সম্পর্কে বিস্তারিত",
+                detailsDesc: "ফ্যাশন যখন হবে স্মার্ট আর কোয়ালিটি যখন হবে আপোষহীন, তখনই আসে Smart Trendz Shop-এর নাম। আমরা কাস্টমারদের জন্য চমৎকার ফেব্রিক্সের কমফোর্ট এবং আধুনিক যুগের নতুন নতুন স্টাইলের কম্বিনেশন ডিজাইন করি। প্রতিটি পোশাক এবং অ্যাক্সেসরিজ সরাসরি প্রিমিয়াম সোর্স থেকে সংগ্রহ করা হয়।",
+                badge1: "কোয়ালিটি গ্যারান্টি",
+                badge2: "ডেলিভারি সাপোর্ট",
+                showcaseTitle: "Our Premium Showcase",
+                showcaseSubtitle: "স্মার্ট ট্রেন্ডজ শপ-এর মূল আকর্ষণসমূহ",
+                card1Title: "Girls' Collection",
+                card1Desc: "এক্সক্লুসিভ গর্জিয়াস থ্রি-পিস, মডার্ন কুর্তি এবং ট্রেন্ডি লেডিস পোশাক যা আপনাকে যেকোনো পার্টি বা ক্যাজুয়াল লুকে দেবে একদম পারফেক্ট গ্ল্যামার।",
+                card2Title: "Boys' Premium Shirts",
+                card2Desc: "ফ্যাশনেবল ক্যাজুয়াল শার্ট, ফরমাল কালেকশন এবং প্রিমিয়াম সুতি কাপড়ের ট্রেন্ডি কালেকশন যা স্টাইল ও কমফোর্টের দারুণ সমাহার।",
+                card3Title: "Smart Accessories",
+                card3Desc: "আপনার প্রতিদিনের আউটফিটকে আরও আকর্ষণীয় করতে ম্যাচিং ঘড়ি, সানগ্লাস, ওয়ালেট এবং লেটেস্ট গ্যাজেট কালেকশন।",
+                contactTitle: "আমাদের সাথে যোগাযোগের ঠিকানা",
+                contactDesc: "যেকোনো প্রশ্ন, পাইকারি বা খুচরা অর্ডার কিংবা প্রোডাক্ট বুকিং সংক্রান্ত যেকোনো তথ্যের জন্য সরাসরি যোগাযোগ করতে পারেন নিচে দেওয়া অ্যাড্রেসে বা মেইলে।",
+                locLbl: "Shop Location:",
+                locVal: "মোহাম্মদপুর, ঢাকা, বাংলাদেশ",
+                emailLbl: "Email Address:",
+                wpLbl: "WhatsApp Chat:",
+                fbTitle: "ফেসবুকে কানেক্টেড থাকুন",
+                fbDesc: "রেগুলার নতুন স্টকের আপডেট ও লাইভ সেশন দেখতে আমাদের অফিশিয়াল ফেসবুক পেজ ফলো করুন।",
+                fbBtn: "Visit Official Facebook Page",
+                copyText: "সর্বস্বত্ব সংরক্ষিত।"
+            },
+            en: {
+                heroDesc: "The ultimate fusion of global trends and your personal style! A vast and reliable collection of exclusive girls' three-pieces, premium quality shirts, and trendy fashion accessories all under one roof.",
+                heroBtn: "Explore Collections",
+                detailsTitle: "Detailed Overview of Our Shop",
+                detailsDesc: "When fashion is smart and quality is uncompromising, the name Smart Trendz Shop comes first. We design outfits combining supreme fabric comfort with contemporary styles. Every apparel and accessory is sourced directly from premium vendors.",
+                badge1: "Quality Guaranteed",
+                badge2: "Delivery Support",
+                showcaseTitle: "Our Premium Showcase",
+                showcaseSubtitle: "The Main Attractions of Smart Trendz Shop",
+                card1Title: "Girls' Collection",
+                card1Desc: "Exclusive gorgeous three-pieces, modern kurtis, and trendy ladies' apparel that give you the perfect glamour for any party or casual look.",
+                card2Title: "Boys' Premium Shirts",
+                card2Desc: "Fashionable casual shirts, formal wear, and premium cotton garments that perfectly blend trendiness with absolute physical comfort.",
+                card3Title: "Smart Accessories",
+                card3Desc: "Matching watches, premium sunglasses, elegant wallets, and the latest lifestyle gadgets to complete your standout daily look.",
+                contactTitle: "Get in Touch With Us",
+                contactDesc: "For any queries, wholesale or retail orders, or product booking, feel free to reach out directly via our email, WhatsApp, or physical location.",
+                locLbl: "Shop Location:",
+                locVal: "Mohammadpur, Dhaka, Bangladesh",
+                emailLbl: "Email Address:",
+                wpLbl: "WhatsApp Chat:",
+                fbTitle: "Stay Connected on Facebook",
+                fbDesc: "Follow our official Facebook page to catch up with regular new stock arrivals, promotions, and interactive live sessions.",
+                fbBtn: "Visit Official Facebook Page",
+                copyText: "All Rights Reserved."
+            }
+        };
+
+        let currentLang = 'bn'; // Default Language
+
+        function toggleLanguage() {
+            if (currentLang === 'bn') {
+                currentLang = 'en';
+                document.getElementById('langBtn').innerText = 'ENG';
+            } else {
+                currentLang = 'bn';
+                document.getElementById('langBtn').innerText = 'বাং';
+            }
+
+            // Update Dom elements
+            document.getElementById('hero-desc').innerText = data[currentLang].heroDesc;
+            document.getElementById('hero-btn').innerText = data[currentLang].heroBtn;
+            document.getElementById('details-title').innerText = data[currentLang].detailsTitle;
+            document.getElementById('details-desc').innerText = data[currentLang].detailsDesc;
+            document.getElementById('badge-1').innerText = data[currentLang].badge1;
+            document.getElementById('badge-2').innerText = data[currentLang].badge2;
+            document.getElementById('showcase-title').innerText = data[currentLang].showcaseTitle;
+            document.getElementById('showcase-subtitle').innerText = data[currentLang].showcaseSubtitle;
+            document.getElementById('card1-title').innerText = data[currentLang].card1Title;
+            document.getElementById('card1-desc').innerText = data[currentLang].card1Desc;
+            document.getElementById('card2-title').innerText = data[currentLang].card2Title;
+            document.getElementById('card2-desc').innerText = data[currentLang].card2Desc;
+            document.getElementById('card3-title').innerText = data[currentLang].card3Title;
+            document.getElementById('card3-desc').innerText = data[currentLang].card3Desc;
+            document.getElementById('contact-title').innerText = data[currentLang].contactTitle;
+            document.getElementById('contact-desc').innerText = data[currentLang].contactDesc;
+            document.getElementById('loc-lbl').innerText = data[currentLang].locLbl;
+            document.getElementById('loc-val').innerText = data[currentLang].locVal;
+            document.getElementById('email-lbl').innerText = data[currentLang].emailLbl;
+            document.getElementById('wp-lbl').innerText = data[currentLang].wpLbl;
+            document.getElementById('fb-title').innerText = data[currentLang].fbTitle;
+            document.getElementById('fb-desc').innerText = data[currentLang].fbDesc;
+            document.getElementById('fb-btn').innerText = data[currentLang].fbBtn;
+            document.getElementById('copy-text').innerText = data[currentLang].copyText;
+        }
+    </script>
+</body>
+</html>
